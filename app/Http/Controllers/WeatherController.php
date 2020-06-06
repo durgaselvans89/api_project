@@ -37,7 +37,7 @@ class WeatherController extends Controller
                                     'weather' => json_encode($arr->weather),
                                     'base' => $arr->base,
                                     'main' => json_encode($arr->main),
-                                    'visibility' => $arr->visibility,
+                                    'visibility' => isset($arr->visibility) ? $arr->visibility : 0 ,
                                     'wind' => json_encode($arr->wind),
                                     'clouds' => json_encode($arr->clouds),
                                     'dt' => $arr->dt, 
@@ -54,7 +54,7 @@ class WeatherController extends Controller
                                     'weather' => json_encode($arr->weather),
                                     'base' => $arr->base,
                                     'main' => json_encode($arr->main),
-                                    'visibility' => $arr->visibility,
+                                    'visibility' => isset($arr->visibility) ? $arr->visibility : 0,
                                     'wind' => json_encode($arr->wind),
                                     'clouds' => json_encode($arr->clouds),
                                     'dt' => $arr->dt, 
@@ -64,7 +64,8 @@ class WeatherController extends Controller
                                     'created_at' => strtotime('now'),
                                     'updated_at' => strtotime('now'),
                                 );  
-                        CityWeather::store($insert);   
+                        CityWeather::store($insert);
+
                     }    
                 }
             }
